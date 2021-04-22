@@ -1,0 +1,72 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cocktail_Finder"
+        xmlns:Objects="clr-namespace:Cocktail_Finder.Objects" x:Class="Cocktail_Finder.MainWindow"
+        mc:Ignorable="d"
+        Title="Cocktail Finder" Height="450" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".25*"/>
+            <RowDefinition Height=".25*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
+            <GroupBox Header="Ingredient 1" Margin="5">
+                <ComboBox x:Name="Ingredient1" Width="90" IsEditable="True" SelectionChanged="Ingredient1_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+            <GroupBox Header="Ingredient 2" Margin="5">
+                <ComboBox x:Name="Ingredient2" Width="90" IsEditable="True" IsEnabled="False" SelectionChanged="Ingredient2_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="2" Grid.Row="0">
+            <GroupBox Header="Ingredient 3" Margin="5">
+                <ComboBox IsEditable="True" x:Name="Ingredient3" Width="90" IsEnabled="False" SelectionChanged="Ingredient3_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="0">
+            <GroupBox Header="Ingredient 4" Margin="5">
+                <ComboBox IsEditable="True" x:Name="Ingredient4" Width="90" IsEnabled="False" SelectionChanged="Ingredient4_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="4" Grid.Row="0">
+            <GroupBox Header="Ingredient 5" Margin="5">
+                <ComboBox IsEditable="True" x:Name="Ingredient5" Width="90" IsEnabled="False" SelectionChanged="Ingredient5_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="5" Grid.Row="0">
+            <GroupBox Header="Ingredient 6" Margin="5">
+                <ComboBox IsEditable="True" x:Name="Ingredient6" Width="90" IsEnabled="False" SelectionChanged="Ingredient6_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="6" Grid.Row="0">
+            <GroupBox Header="Ingredient 7" Margin="5">
+                <ComboBox IsEditable="True" x:Name="Ingredient7" Width="90" IsEnabled="False" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            </GroupBox>
+        </StackPanel>
+
+        <Button Grid.Row="1" Grid.Column="0" Margin="10" x:Name="AddCocktail" Click="AddCocktail_Click" Content="Add Cocktail"/>
+        
+        <Button Grid.Row="1" Grid.Column="3" Margin="10" x:Name="FindCocktail" Click="FindCocktail_Click" Content="Find Cocktail"/>
+
+        <Button Visibility="Hidden" Grid.Row="1" Grid.Column="6" Margin="10" x:Name="AddIngredient" Click="AddIngredient_Click" Content="Add Ingredient"/>
+
+        <DataGrid Grid.ColumnSpan="7" Grid.Row="2" VerticalAlignment="Top" x:Name="CocktailResults"/>
+    </Grid>
+</Window>
