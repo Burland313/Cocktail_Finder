@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cocktail_Finder.Factory
 {
-    public class StringGenerator
+    public class QueryGenerator
     {
-        public static string GetIngredients(List<string> ingredientList)
+        public static string GetIngredients_qry(List<string> ingredientList)
         {
             string queryString = $@"SELECT Cocktail_Name, Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, Ingredient6, Ingredient7 FROM Cocktail_Ingredients";
             bool firstPass = true;
@@ -16,42 +16,42 @@ namespace Cocktail_Finder.Factory
             {
                 if(firstPass)
                 {
-                    queryString = queryString + $@" WHERE '{s}' IN (Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, Ingredient6, Ingredient7)";
+                    queryString += $@" WHERE '{s}' IN (Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, Ingredient6, Ingredient7)";
                     firstPass = false;
                 }
                 else
                 {
-                    queryString = queryString + $@"AND '{s}' IN (Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, Ingredient6, Ingredient7)";
+                    queryString += $@"AND '{s}' IN (Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, Ingredient6, Ingredient7)";
                 }
             }
 
             return queryString;
         }
 
-        public static string AddCocktailQuery(List<string> ingredientList, string cocktailName)
+        public static string AddCocktail_qry(List<string> ingredientList, string cocktailName)
         {
             string queryString = $@"INSERT INTO [CocktailProject].[dbo].[Cocktail_Ingredients] (";
 
-            queryString = queryString + "Cocktail_Name";
+            queryString += "Cocktail_Name";
             int index = 0;
             foreach (var i in ingredientList)
             {
                 if (index <= ingredientList.Count())
                 {
-                    queryString = queryString + ", ";
+                    queryString += ", ";
                 }
 
-                queryString = queryString + $"Ingredient{index + 1}";
+                queryString += $"Ingredient{index + 1}";
   
                 if (index == ingredientList.Count() - 1)
                 {
-                    queryString = queryString + ") ";
+                    queryString += ") ";
                 }
 
                 index++;
             }
 
-            queryString = queryString + "VALUES (";
+            queryString += "VALUES (";
 
             int index2 = 0;
             queryString = queryString + "'" + cocktailName + "'";
@@ -59,14 +59,14 @@ namespace Cocktail_Finder.Factory
             {
                 if (index2 <= ingredientList.Count())
                 {
-                    queryString = queryString + ", ";
+                    queryString += ", ";
                 }
     
                 queryString = queryString + "'" + i + "'";
 
                 if (index2 == ingredientList.Count() - 1)
                 {
-                    queryString = queryString + ")";
+                    queryString += ")";
                 }
 
                 index2++;

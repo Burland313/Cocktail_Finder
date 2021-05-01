@@ -15,7 +15,7 @@ namespace Cocktail_Finder.Database
             DataTable CocktailResults = new DataTable();
             using (SqlConnection conn = new SqlConnection(connection))
             {
-                string query = Factory.StringGenerator.GetIngredients(ingredientList);
+                string query = Factory.QueryGenerator.GetIngredients_qry(ingredientList);
 
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
@@ -36,7 +36,7 @@ namespace Cocktail_Finder.Database
         {
             using (SqlConnection conn = new SqlConnection(connection))
             {
-                string query = Factory.StringGenerator.AddCocktailQuery(ingredientList, cocktailName);
+                string query = Factory.QueryGenerator.AddCocktail_qry(ingredientList, cocktailName);
 
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
@@ -50,7 +50,7 @@ namespace Cocktail_Finder.Database
 
         }
 
-        //This might be used later if the ingredients are stored in their on DB
+        //This might be used later if the ingredients are stored in their on table
         public static void AddIngredient(string connection, string ingredientName)
         {
             using (SqlConnection conn = new SqlConnection(connection))
